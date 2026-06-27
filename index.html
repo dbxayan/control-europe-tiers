@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Europe Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TOP NAVIGATION MENU -->
+    <div class="navbar">
+        <button class="nav-btn active" onclick="switchTab('ranks')">RANKS (1-20)</button>
+        <button class="nav-btn" onclick="switchTab('tiers')">TIERS (HT1-LT5)</button>
+    </div>
+
+    <!-- PAGE 1: RANKS (1-20) -->
+    <div id="ranks-page" class="page-content active-page">
+        <h1>CONTROL EUROPE // TOP 20 RANKS</h1>
+        <p class="subtitle">The Absolute Elite Commanders In Order</p>
+        
+        <div class="ranks-grid" id="ranks-container">
+            <!-- 20 slots will be generated here automatically -->
+        </div>
+    </div>
+
+    <!-- PAGE 2: TIERS (HT1-LT5) -->
+    <div id="tiers-page" class="page-content">
+        <h1>CONTROL EUROPE // COMMANDER TIERS</h1>
+        <p class="subtitle">Skill Brackets (Lower Tier Number = Higher Skill)</p>
+
+        <div class="tier-container">
+            <!-- TIER 1 -->
+            <div class="tier-row"><div class="tier-label ht-label">HT1</div><div class="tier-dropzone"></div></div>
+            <div class="tier-row"><div class="tier-label mt-label">MT1</div><div class="tier-dropzone"></div></div>
+            <div class="tier-row"><div class="tier-label lt-label">LT1</div><div class="tier-dropzone"></div></div>
+            <!-- TIER 2 -->
+            <div class="tier-row"><div class="tier-label ht-label">HT2</div><div class="tier-dropzone"></div></div>
+            <div class="tier-row"><div class="tier-label mt-label">MT2</div><div class="tier-dropzone"></div></div>
+            <div class="tier-row"><div class="tier-label lt-label">LT2</div><div class="tier-dropzone"></div></div>
+            <!-- TIER 3 -->
+            <div class="tier-row"><div class="tier-label ht-label">HT3</div><div class="tier-dropzone"></div></div>
+            <div class="tier-row"><div class="tier-label mt-label">MT3</div><div class="tier-dropzone"></div></div>
+            <div class="tier-row"><div class="tier-label lt-label">LT3</div><div class="tier-dropzone"></div></div>
+            <!-- TIER 4 -->
+            <div class="tier-row"><div class="tier-label ht-label">HT4</div><div class="tier-dropzone"></div></div>
+            <div class="tier-row"><div class="tier-label mt-label">MT4</div><div class="tier-dropzone"></div></div>
+            <div class="tier-row"><div class="tier-label lt-label">LT4</div><div class="tier-dropzone"></div></div>
+            <!-- TIER 5 -->
+            <div class="tier-row"><div class="tier-label ht-label">HT5</div><div class="tier-dropzone"></div></div>
+            <div class="tier-row"><div class="tier-label mt-label">MT5</div><div class="tier-dropzone"></div></div>
+            <div class="tier-row"><div class="tier-label lt-label">LT5</div><div class="tier-dropzone"></div></div>
+        </div>
+    </div>
+
+    <!-- UNRANKED PLAYER POOL -->
+    <div class="bank-section">
+        <h2>COMMANDER DATABASE</h2>
+        <div class="item-bank" id="item-bank">
+            <!-- Add your initial player names here as draggable blocks -->
+            <div class="drag-item" draggable="true" id="p1">Player_1</div>
+            <div class="drag-item" draggable="true" id="p2">Player_2</div>
+            <div class="drag-item" draggable="true" id="p3">Player_3</div>
+            <div class="drag-item" draggable="true" id="p4">Player_4</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
