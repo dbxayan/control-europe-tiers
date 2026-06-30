@@ -1,190 +1,148 @@
-body {
-    background-color: #0b0f14;
-    color: #c4ced8;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 20px;
-    padding-top: 80px; /* Leaves room for the top navigation bar */
-    text-align: center;
+:root {
+    --bg-color: #0b0f19;
+    --card-bg: #141b2d;
+    --border-color: #1f293d;
+    --text-color: #e2e8f0;
+    --accent-blue: #00ffcc;
+    --tier-high: #ff4a4a;
+    --tier-mid: #ffaa00;
+    --tier-low: #00aaff;
 }
 
-h1 {
-    color: #00ffcc;
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+    color: var(--accent-blue);
+    margin: 0;
     text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
-    letter-spacing: 2px;
-    margin-bottom: 5px;
 }
 
 .subtitle {
-    color: #708296;
-    margin-bottom: 30px;
-    font-size: 14px;
+    color: #64748b;
+    margin-top: 5px;
 }
 
-/* TOP NAVIGATION BAR */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #070a0e;
-    border-bottom: 1px solid #1f2d3d;
-    display: flex;
-    justify-content: center;
-    padding: 15px 0;
-    z-index: 1000;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.nav-btn {
-    background: transparent;
-    border: 1px solid #1f2d3d;
-    color: #708296;
-    padding: 10px 25px;
-    margin: 0 10px;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: all 0.2s ease;
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+    margin: 40px 0;
 }
 
-.nav-btn:hover {
-    color: #00ffcc;
-    border-color: #00ffcc44;
-}
-
-.nav-btn.active {
-    color: #00ffcc;
-    border-color: #00ffcc;
-    box-shadow: inset 0 0 8px rgba(0, 255, 204, 0.2);
-}
-
-/* MULTI-PAGE VIEW CONTROLS */
-.page-content {
-    display: none; /* Hides the inactive page automatically */
-}
-
-.page-content.active-page {
-    display: block; /* Shows the current active page */
-}
-
-/* 1-20 RANKS GRID SETUP */
+/* Ranks Grid */
 .ranks-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 15px;
-    max-width: 1000px;
-    margin: 0 auto 40px auto;
 }
 
-.rank-card {
-    background-color: #0f1620;
-    border: 1px solid #1f2d3d;
-    padding: 15px;
-    border-radius: 4px;
-    min-height: 100px;
+.rank-slot {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    padding: 10px;
+    min-height: 45px;
 }
 
 .rank-number {
-    color: #00ffcc;
-    font-size: 20px;
     font-weight: bold;
-    border-bottom: 1px solid #1f2d3d;
-    width: 100%;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
+    color: var(--accent-blue);
+    width: 40px;
+    border-right: 1px solid var(--border-color);
+    margin-right: 12px;
 }
 
-/* 15 TIERS BRACKET SYSTEM */
+/* Draggable Items */
+.drag-item {
+    display: flex;
+    align-items: center;
+    cursor: grab;
+    flex-grow: 1;
+    user-select: none;
+}
+
+.drag-item:active {
+    cursor: grabbing;
+}
+
+.drag-item.dragging {
+    opacity: 0.4;
+}
+
+.player-logo {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    object-fit: contain;
+    border-radius: 3px;
+}
+
+/* Tier Rows */
 .tier-container {
-    max-width: 1000px;
-    margin: 0 auto 40px auto;
-    border: 1px solid #1f2d3d;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .tier-row {
     display: flex;
-    min-height: 65px;
-    border-bottom: 1px solid #1f2d3d;
-    background-color: #0f1620;
-}
-
-.tier-row:last-child {
-    border-bottom: none;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .tier-label {
-    width: 120px;
+    width: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 20px;
-    border-right: 1px solid #1f2d3d;
-    user-select: none;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #1e293b;
 }
 
-/* Sub-Tier Row Colors */
-.ht-label { background-color: #3a050c; color: #ff4455; text-shadow: 0 0 8px #ff4455; }
-.mt-label { background-color: #2b1303; color: #ff9933; }
-.lt-label { background-color: #112211; color: #33cc66; }
+.tier-1 { background-color: #b91c1c; }
+.tier-2 { background-color: #c2410c; }
+.tier-3 { background-color: #b45309; }
+.tier-4 { background-color: #15803d; }
+.tier-5 { background-color: #1d4ed8; }
 
-/* DRAG AND DROP SLOTS */
-.tier-dropzone, .rank-slot {
-    flex: 1;
+.tier-dropzone {
+    flex-grow: 1;
+    padding: 10px;
     display: flex;
-    align-items: center;
-    padding: 8px;
-    gap: 10px;
     flex-wrap: wrap;
-    background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-
-.rank-slot {
-    width: 100%;
+    gap: 10px;
     min-height: 50px;
-    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* COMMANDER DATABASE BANK */
-.bank-section {
-    max-width: 1000px;
-    margin: 40px auto;
-    border-top: 1px dashed #1f2d3d;
-    padding-top: 20px;
-}
-
-.item-bank {
-    min-height: 120px;
-    background-color: #090d14;
-    border: 1px dashed #1f2d3d;
-    padding: 15px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-/* PLAYER CARDS */
-.drag-item {
-    background-color: #16222f;
-    color: #00ffcc;
-    padding: 10px 18px;
-    border: 1px solid #00ffcc33;
-    border-radius: 2px;
-    cursor: grab;
-    user-select: none;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.drag-item:hover {
-    background-color: #1c2e40;
-    box-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
+.tier-dropzone .drag-item {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 4px;
+    flex-grow: 0;
 }
